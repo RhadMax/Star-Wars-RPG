@@ -1,0 +1,36 @@
+Game rough concept:
+
+    Player sees a title screen, (overlayed image that hides on click?), then upon starting play user selects from a list of characters. Whatever character is chosen remains on the top of the screen while the remaining characters drop down into the next row which is marked as enemies. The player then can choose which of the enemies they wish to fight by clicking on one which will place that selected enemy down into the 'defender' row at the bottom (this seems like clunky ui, tbh... may revamp positioning and phrasing to make it more intuitive and engaging, for example calling it "Battle" or something to that effect and once engaged the player's portrait also appears by the selected opponent, maybe iwth animation). Player then can press the attack button to engage in a round of combat with the selected enemy. The player will do damage based on their attack value, which compounds upon itself with each round of combat (to make game scalable to 6 characters it may need to be that some chars have a seperate base attack vs attack growth). The enemy character will retaliate with each round, dealing their 'counterattack' damage value, which is a static value that is only used if the character is defending as an NPC. Each character in the game has a different amount of hp, attack, and counter-attack values, but each character should be able to win the game by selecting the enemies with weaker counter-attacks first so that their own attack power can compound enough each fight that they can finish the game without dying. In order to have variance between each character it will likely be the case that some character choices can win the game without being too careful about what order you face opponents in. I suspect some tweaking of values may wind up being in order. Obviously, if char hp goes to 0 that char dies... if player it is gg, if npc then player exits battle arena, or npc icon is removed from defender depending on how I do it, and player can continue to select another opponent. Hp is displayed on icons at all times. During battle there is a display for damage done upon each press of the attack button, and also display for damage done by enemy char in return. If player defeats opponent, opponent does no damage that round as enemies can only retaliate, not initiate attack (one thing that makes the 'defender' title worthwhile, but meh)
+
+    Spitballing for chars - Trooper - Heavy hp, lowest counter, low attack (possibly needs a slightly higher base attack to compensate if chosen as player char)
+
+                            Han - medium-low hp, low counter, medium attack
+
+                            Luke - average all day 
+
+                            Vader - high hp, medium counter, medium attack
+
+                            Palpatine - low hp, high counter, high attack
+
+                            Anakin - medium hp, highest counter, higher attack
+
+    Xtra Whiteboarding: I've sourced images and sounds already with the idea that I could have an mp3 for each character that plays upon being selected, another upon defeating an opponent, and another upon victory. It's possible I could source even more for several of the characters since resources are so vast for SW titles, so that characters could get a random clip from an array for more variance in play. Also for the images we could use a portrait style image for character selection and choosing opponents, but then when placed down into the combat area the images could be the more combat-appropriate images I have sourced. I tried to find a variety for each unit so there could be some sort of swapping out the images for new ones as the player characters power grows. This may or may not be worth doing for opponents images... though it would be cool to find images of each character looking under duress for when unit hp gets low.
+
+Pseudo Steps:
+
+//Title screen covers page on loadup with prompt to click to start
+//gameplay screen first shows all characters along top with prompt to select char
+//upon choosing char text changes to say "You are:" and all other portaits move down to enemies row and charselection sound plays
+//color scheme is applied upon that choice and text prompt to select opponent appears under 2nd row
+//upon clicking enemy char their portrait becomes highlighted and player can press a button to begin the battle
+//once battle begins the enemy char icon is removed from row 2 and prompt text to choose opponent is replaced with "Fight!:" (or something)
+//player combat image1 and enemy char combat image 1 are populated in battle area of screen at bottom
+//attack button appears between images, if pressed display lines of text for damage being done and received
+//damage being done is tracked by updating textcontents on each players' images. Also update player hp on main portrait at top as well.
+//as player damage scales up their image updates... maybe this occurs after set # of opponents???
+//if player hp reaches 0 game over, show game over screen, reset everything to title screen
+//if enemy char hp reaches 0, player wins, both icons are removed from combat area and combatvictory sound plays
+//upon combatvictory the "fight" text is set back to prompt to select opponent
+//combat steps proceed again as before, but player hp and attack value carry over
+//upon final enemy being defeated finalvictory sound players for that character and a win screen appears
+//reset to title
